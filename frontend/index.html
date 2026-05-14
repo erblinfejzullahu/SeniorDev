@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bella Vista - AI Receptionist</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-wrapper">
+
+    <header>
+      <div class="logo-line">
+        <div class="logo-divider"></div>
+        <span class="logo-icon">🍽</span>
+        <div class="logo-divider right"></div>
+      </div>
+      <h1>Bella <em>Vista</em></h1>
+      <p class="tagline">AI Receptionist &nbsp;&middot;&nbsp; Prishtine</p>
+      <div class="header-rule"></div>
+    </header>
+
+    <div class="status-bar">
+      <div class="status-dot" id="status-dot"></div>
+      <span id="status-text">Initializing...</span>
+    </div>
+
+    <div class="conversation-window" id="conversation">
+      <div class="empty-state">
+        <span class="empty-icon">🍽</span>
+        <p>How may I assist you today?</p>
+        <p class="empty-hint">Speak or type your question below</p>
+      </div>
+    </div>
+
+    <div class="audio-player" id="audio-player">
+      <span>🔊</span>
+      <audio id="audio-element" controls></audio>
+    </div>
+
+    <div class="controls">
+      <button class="mic-button" id="mic-button">
+        <span class="mic-icon">🎙</span>
+        <span id="mic-button-label">Start Talking</span>
+      </button>
+
+      <div class="text-input-row">
+        <input type="text" class="text-input" id="text-input"
+          placeholder="Or type your message here..." autocomplete="off" />
+        <button class="send-button" id="send-button">Send</button>
+      </div>
+
+      <div class="secondary-actions">
+        <button class="action-btn" id="clear-btn">New Conversation</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>Bella Vista Restaurant &nbsp;&middot;&nbsp; Rruga e Dibres 42, Prishtine</p>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

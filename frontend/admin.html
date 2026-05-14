@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bella Vista · Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div class="login-overlay" id="login-overlay">
+    <div class="login-card">
+      <div class="login-logo">🍽</div>
+      <h2>Bella <em>Vista</em></h2>
+      <p class="login-sub">Admin Dashboard</p>
+      <input type="password" id="password-input" placeholder="Enter password" />
+      <button id="login-btn">Enter</button>
+      <p class="login-error" id="login-error">Incorrect password. Try again.</p>
+    </div>
+  </div>
+
+  <!-- CHANGE PASSWORD MODAL -->
+  <div class="modal-overlay" id="cp-modal">
+    <div class="modal-card">
+      <h3>Change Password</h3>
+      <input type="password" id="cp-current"  placeholder="Current password" />
+      <input type="password" id="cp-new"      placeholder="New password (min 6 chars)" />
+      <input type="password" id="cp-confirm"  placeholder="Confirm new password" />
+      <p class="modal-error" id="cp-error"></p>
+      <div class="modal-actions">
+        <button class="modal-cancel" id="cp-cancel">Cancel</button>
+        <button class="modal-submit" id="cp-submit">Update Password</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboard">
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span>🍽</span>
+        <div>
+          <div class="sidebar-title">Bella Vista</div>
+          <div class="sidebar-sub">Admin Panel</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-btn active" data-tab="overview">
+          <span class="nav-icon">📊</span><span class="nav-label">Overview</span>
+        </button>
+        <button class="nav-btn" data-tab="reservations">
+          <span class="nav-icon">📅</span><span class="nav-label">Reservations</span>
+        </button>
+        <button class="nav-btn" data-tab="callbacks">
+          <span class="nav-icon">📞</span><span class="nav-label">Callbacks</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="change-password-btn" class="footer-btn">🔑 Change Password</button>
+        <button id="logout-btn" class="footer-btn logout">↩ Log out</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <div>
+          <h1 id="page-title">Overview</h1>
+          <p id="page-date"></p>
+        </div>
+        <div class="top-bar-actions">
+          <button class="refresh-btn" id="refresh-btn">↻ Refresh</button>
+          <button class="mobile-logout-btn" id="mobile-logout-btn">↩</button>
+        </div>
+      </div>
+
+      <!-- OVERVIEW TAB -->
+      <div class="tab-content active" id="tab-overview">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-value" id="stat-today-guests">—</div>
+            <div class="stat-label">Guests Today</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-value" id="stat-today-reservations">—</div>
+            <div class="stat-label">Reservations Today</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🪑</div>
+            <div class="stat-value" id="stat-tables-free">—</div>
+            <div class="stat-label">Tables Free Now</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📞</div>
+            <div class="stat-value" id="stat-pending-callbacks">—</div>
+            <div class="stat-label">Pending Callbacks</div>
+          </div>
+        </div>
+        <div class="section-title">Monthly Calendar</div>
+        <div id="calendar-container"></div>
+      </div>
+
+      <!-- RESERVATIONS TAB -->
+      <div class="tab-content" id="tab-reservations">
+        <div class="filter-bar">
+          <input type="date" id="filter-date" class="filter-input" />
+          <button class="filter-btn" id="filter-btn">Filter</button>
+          <button class="filter-btn secondary" id="clear-filter-btn">Show All</button>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th><th>Phone</th><th>Date</th><th>Time</th>
+                <th>Guests</th><th>Tables</th><th>Booked At</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="reservations-body">
+              <tr><td colspan="8" class="loading">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CALLBACKS TAB -->
+      <div class="tab-content" id="tab-callbacks">
+        <div class="filter-bar">
+          <label class="filter-toggle">
+            <input type="checkbox" id="show-pending-only" checked />
+            Show pending only
+          </label>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th><th>Phone</th><th>Requested At</th><th>Status</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="callbacks-body">
+              <tr><td colspan="5" class="loading">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
