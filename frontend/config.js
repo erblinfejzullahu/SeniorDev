@@ -7,4 +7,4 @@ const IS_LOCAL = window.location.hostname === "localhost" ||
 
 const API_BASE = IS_LOCAL
   ? "http://localhost:8001"
-  : "https://YOUR_RENDER_URL.onrender.com"; // ← replace after Render deploy
+  : "https://seniordev.onrender.com"; // ← replace after Render deploy
